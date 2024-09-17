@@ -376,210 +376,29 @@
         "valueType": "string"
       }
     ]
-  },{
-    "id": "interestrate",
-    "fields": [
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "jcr:title",
-        "value": "Interest Rate",
-        "label": "Title"
-      },
-      {
-        "component": "select",
-        "name": "country",
-        "value": "Australia",
-        "label": "Country",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Australia",
-            "value": "australia"
-          },
-          {
-            "name": "China",
-            "value": "china"
-          },
-          {
-            "name": "Denmark",
-            "value": "denmark"
-          },
-          {
-            "name": "Mexico",
-            "value": "mexico"
-          },
-          {
-            "name": "New Zealand",
-            "value": "new zealand"
-          },
-          {
-            "name": "Switzerland",
-            "value": "switzerland"
-          },
-          {
-            "name": "United Kingdom",
-            "value": "united kingdom"
-          }
-        ]
-      }
-    ]
   },
   {
-    "id": "creditcardslist",
+    "id": "feed",
     "fields": [
       {
-        "component": "aem-tag",
-        "name": "tags",
-        "value": "transactions",
-        "label": "Tag",
+        "component": "container",
+        "name": "feed",
+        "label": "Feed",
         "valueType": "string",
-        "rootPath": "/content/cq:tags/securbank"
-      },
-      {
-        "component": "text-input",
-        "name": "variation",
-        "value": "master",
-        "label": "Variation",
-        "valueType": "string"
-      },
-      {
-        "component": "multiselect",
-        "name": "classes",
-        "label": "Style",
-        "valueType": "string",
-        "required": true,
-        "maxSize": 3,
-        "options": [
+        "fields": [
           {
-            "name": "Theme",
-            "children": [
-              {
-                "name": "Light",
-                "value": "light"
-              },
-              {
-                "name": "Dark",
-                "value": "dark"
-              }
-            ]
+            "component": "text-input",
+            "label": "Role",
+            "name": "role",
+            "valueType": "string"
           },
           {
-            "name": "Alignment",
-            "children": [
-              {
-                "name": "Left",
-                "value": "left"
-              },
-              {
-                "name": "Right",
-                "value": "right"
-              }
-            ]
-          },
-          {
-            "name": "Background Color",
-            "children": [
-              {
-                "name": "Grey",
-                "value": "bg-spectrum-gray-700"
-              },
-              {
-                "name": "Blue",
-                "value": "bg-spectrum-blue-700"
-              },
-              {
-                "name": "Green",
-                "value": "bg-spectrum-green-700"
-              },
-              {
-                "name": "Orange",
-                "value": "bg-spectrum-orange-700"
-              },
-              {
-                "name": "Red",
-                "value": "bg-spectrum-red-700"
-              },
-              {
-                "name": "Celery",
-                "value": "bg-spectrum-celery-700"
-              },
-              {
-                "name": "Chartreuse",
-                "value": "bg-spectrum-chartreuse-700"
-              },
-              {
-                "name": "Cyan",
-                "value": "bg-spectrum-cyan-700"
-              },
-              {
-                "name": "Fuchsia",
-                "value": "bg-spectrum-fuchsia-700"
-              },
-              {
-                "name": "Indigo",
-                "value": "bg-spectrum-indigo-700"
-              },
-              {
-                "name": "Magenta",
-                "value": "bg-spectrum-magenta-700"
-              },
-              {
-                "name": "Purple",
-                "value": "bg-spectrum-purple-700"
-              },
-              {
-                "name": "Seafoam",
-                "value": "bg-spectrum-seafoam-700"
-              },
-              {
-                "name": "Yellow",
-                "value": "bg-spectrum-yellow-700"
-              }
-            ]
+            "component": "reference",
+            "label": "Folder",
+            "name": "folder",
+            "valueType": "string"
           }
         ]
-      }
-    ]
-  },{
-    "id": "quote",
-    "fields": [
-       {
-         "component": "text-area",
-         "name": "quote",
-         "value": "",
-         "label": "Quote",
-         "valueType": "string"
-       },
-       {
-         "component": "text-input",
-         "valueType": "string",
-         "name": "author",
-         "label": "Author",
-         "value": ""
-       }
-     ]
-  },
-  {
-    "id": "testbox",
-    "fields": [
-      {
-        "component": "custom-asset-namespace:custom-asset",
-        "name": "image",
-        "label": "Image",
-        "configUrl": "https://main--securbank-aem-ue--markszulc.hlx.page/tools/assets-selector/image.config.json",
-        "valueType": "string"
-      },
-      {
-        "component": "custom-asset-namespace:custom-asset-mimetype",
-        "valueType": "string",
-        "name": "imageMimeType"
-      },
-      {
-        "component": "text",
-        "name": "imageAlt",
-        "label": "Alt Text",
-        "valueType": "string"
       }
     ]
   }
