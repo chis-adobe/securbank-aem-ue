@@ -35,7 +35,13 @@
       "offer",
       "featurearticles",
       "fragment",
+<<<<<<< Updated upstream
       "faq"
+=======
+      "faq",
+      "feed",
+      "ctc-teaser"
+>>>>>>> Stashed changes
     ]
   },
   {
