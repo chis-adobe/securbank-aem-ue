@@ -66,18 +66,18 @@ function decorateUnAuthenticatedState(parent) {
 
     authenticate(username, password).then((user) => {
       // console.log(user);
-      /* if (user === null) {
+      if (user === null) {
         const errorMessage = document.getElementsByClassName('error-message')[0];
         errorMessage.style.display = 'block';
         errorMessage.textContent = 'Authentication failed.';
-      } else { */
+      } else {
         const errorMessage = document.getElementsByClassName('error-message')[0];
         errorMessage.style.display = 'none';
         errorMessage.textContent = '';
         document.getElementById('log-in').remove();
         decorateAuthenticatedState(parent, user);
         decorateNavAuth();
-      //}
+      }
     });
     // handle submit
   });

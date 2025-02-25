@@ -516,6 +516,48 @@ async function fetchPlaceholders(prefix = 'default') {
 }
 
 /**
+ * Gets logins object.
+ * @param {string} [prefix] Location of login spreadsheet
+ * @returns {object} Window logins object
+ */
+// eslint-disable-next-line import/prefer-default-export
+async function fetchLogins(prefix = 'default') {
+  window.logins = window.logins || {};
+  if (!window.logins[prefix]) {
+    window.logins[prefix] = new Promise((resolve) => {
+      fetch(`${prefix === 'default' ? '' : prefix}/logins.json`)
+        .then((resp) => {
+          if (resp.ok) {
+            return resp.json();
+          }
+          return {};
+        })
+        .then((json) => {
+          const logins = {};
+          json.data
+            .filter((login) => login.username)
+            .forEach((login) => {
+              logins[login.username] = {
+                firstName: login.firstname,
+                lastName: login.lastname,
+                company: login.tag,
+                email: login.email
+              }
+            });
+          window.logins[prefix] = logins;
+          resolve(window.logins[prefix]);
+        })
+        .catch(() => {
+          // error loading placeholders
+          window.logins[prefix] = {};
+          resolve(window.logins[prefix]);
+        });
+    });
+  }
+  return window.logins[`${prefix}`];
+}
+
+/**
  * Builds a block DOM Element from a two dimensional array, string, or object
  * @param {string} blockName name of the block
  * @param {*} content two dimensional array or string or object of content
@@ -911,6 +953,7 @@ export {
   decorateIcons,
   decorateSections,
   decorateTemplateAndTheme,
+  fetchLogins,
   fetchPlaceholders,
   getMetadata,
   getEnvUrls,

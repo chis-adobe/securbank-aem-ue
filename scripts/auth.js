@@ -1,3 +1,5 @@
+import { fetchLogins } from '../../scripts/aem.js';
+
 let authCallbacks = [];
 
 export function addCallback(callback, block) {
@@ -43,9 +45,9 @@ export default async function authenticate(username, password) {
   };
   const response = await fetch('https://28538-authfake.adobeio-static.net/api/v1/web/FakeAuth/generic', options);
   if (!response.ok) {
-    // console.log("Boo")
+    const loginsResponse = await fetchLogins('');
 
-    return authenticateDefaultUser(username);
+    return authenticateDefaultUser(loginsResponse, username);
   } else {
     const userInfo = await response.json();
     window.localStorage.setItem('auth', JSON.stringify(userInfo));
@@ -55,12 +57,20 @@ export default async function authenticate(username, password) {
   return null;
 }
 
-function authenticateDefaultUser(username) {
-  const defaultUsers = {
+function authenticateDefaultUser(loginUsers, username) {
+  // Check if loginUsers is a non empty json object
+  const defaultUsers = typeof loginUsers === "object" &&
+                          loginUsers !== null &&
+                          !Array.isArray(loginUsers) &&
+                          Object.keys(loginUsers).length > 0
+                        ? loginUsers :
+
+  // Set defaultUsers to hardcoded value otherwise
+  {
     "julia.dobbs@mackenzieinvestments.com": {
       firstName: "Julia",
       lastName: "Dobbs",
-      company: "igm:mackenzie",
+      company: "igm:ig",
       email: "julia.dobbs@mackenzieinvestments.com"
     },
     "adam.kozeus@igmfinancial.com": {

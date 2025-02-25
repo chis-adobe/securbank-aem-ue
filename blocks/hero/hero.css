@@ -10,28 +10,11 @@ main .hero-container h3 {
 text-align: center;
 }
 
-/* Custom */
-main .hero-container .hero-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-}
-
 main .hero {
   position: relative;
   padding: 32px;
   min-height: 454px;
   color: var(--background-color);
-
-  /* Custom */
-  max-width: 1280px;
-  max-height: 454px;
-  padding: 0;
-
-  @media (width < 1281px) {
-    max-height: unset;
-    display: block;
-  }
 }
 
 main .hero .hero-body {
@@ -42,30 +25,6 @@ main .hero .hero-body {
   color: white;
   position: relative;
   z-index: 1;
-
-  /* Custom */
-  position: absolute;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 32px;
-
-  @media (width < 1281px) {
-    position: relative;
-    width: auto;
-    height: auto;
-    color: black;
-  }
-}
-
-main .hero .hero-body > div {
-  width: 70%;
-
-  /* Custom */
-  @media (width < 1281px) {
-    width: 100%;
-  }
 }
 
 main .hero h1 {
@@ -73,17 +32,6 @@ main .hero h1 {
   margin: 106px auto 0;
   color: white;
   font: normal normal normal 48px/52px adobe-clean, sans-serif;
-  width: 75%;
-  margin: 0;
-  margin-top: 106px;
-
-  /* Custom */
-  margin-top: 0;
-
-  @media (width < 1281px) {
-    width: 100%;
-    color: black;
-  }
 }
 
 main .hero h2 {
@@ -94,14 +42,6 @@ main .hero h2 {
   color: white;
   text-align: left;
   font: normal normal 900 48px/52px adobe-clean, sans-serif;
-  width: 75%;
-  margin-left: 0;
-  margin-top: 60px;
-
-  @media (width < 1281px) {
-    width: 100%;
-    color: black;
-  }
 }
 
 main .hero picture {
@@ -110,15 +50,6 @@ main .hero picture {
   inset: 0;
   object-fit: cover;
   box-sizing: border-box;
-
-  /* Custom */
-  position: relative;
-  width: fit-content;
-  height: fit-content;
-
-  @media (width < 1281px) {
-    display: block;
-  }
 }
 
 main .hero picture::after {
@@ -127,7 +58,7 @@ main .hero picture::after {
   left:0; top:0;
   width:100%; height:100%;
   display:inline-block; 
-  background: linear-gradient(to right, rgba(0 0 0 / 50%) 40%, rgba(0 0 0 / 0%));
+  background: linear-gradient(to right, rgba(0 0 0 / 50%) 40%, rgba(0 0 0 / 0%))
 }
 
 main .hero img {
@@ -143,11 +74,6 @@ main .hero img {
     object-position: 0 -250px;
     width: 100%;
     height: 100%;
-
-
-    /* Custom */
-    object-position: 0;
-    display: block;
   }
 }
 
@@ -330,7 +256,7 @@ main .hero img {
   margin-top: -3px;
   font-style: normal;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .dashboard-mini-account-balance-heading {
@@ -348,13 +274,15 @@ main .hero img {
 }
 
 .dashboard-mini-account-balance-value {
+  width: 140px;
+  white-space: nowrap;
   line-height: 18px;
   margin-top: 15px;
   text-align: left;
   font-family: 'Adobe Clean', sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 48px;
   color: rgba(44 44 44 / 100%);
 }
 
