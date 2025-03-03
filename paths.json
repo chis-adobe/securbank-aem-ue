@@ -5,7 +5,7 @@
     "/content/securbank/loans/mortgagecalc:/mortgagecalc.json",
     "/graphql:/graphql",
     "/content/securbank.resource/icons/:/icons/",
-    "/tools/assets-selector/dmconfig.json:/.helix/image.config.json",
+    "/tools/dynmaic-media/dm.config.json:/.helix/dm.config.json",
     "/content/securbank/configuration:/.helix/config.json"
   ],
   "includes": ["/content/securbank/"]
