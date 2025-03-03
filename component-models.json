@@ -297,6 +297,13 @@
         "value": ""
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
         "component": "text-area",
         "name": "text",
         "value": "",
