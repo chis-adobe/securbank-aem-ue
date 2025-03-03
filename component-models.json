@@ -279,6 +279,21 @@
         "multi": false
       },
       {
+        "id": "radio-group",
+        "fields": [
+          {
+            "component": "radio-group",
+            "label": "Image Span",
+            "name": "radio",
+            "valueType": "string",
+            "options": [
+              { "name": "Full Width (Text Overlap)", "value": "full" },
+              { "name": "Half Width", "value": "half" }
+            ]
+          }
+        ]
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "imageAlt",

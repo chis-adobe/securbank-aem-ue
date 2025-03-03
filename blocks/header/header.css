@@ -1,9 +1,13 @@
 /* header and nav layout */
+header.header-wrapper {
+  height: auto;
+}
+
 header .nav-wrapper {
   background-color: #006AC3;
   width: 100%;
   z-index: 50;
-  position: fixed;
+  position: relative;
   border-bottom: 1px solid var(--highlight-background-color);
 }
 
