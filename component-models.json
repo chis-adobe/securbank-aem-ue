@@ -286,6 +286,17 @@
         "valueType": "string"
       },
       {
+        "component": "custom-asset-namespace:custom-asset-mimetype",
+        "valueType": "string",
+        "name": "imageMimeType"
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text",
+        "valueType": "string"
+      },
+      {
         "id": "image-span",
         "fields": [
           {
@@ -295,13 +306,6 @@
             "valueType": "boolean"
           }
         ]
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
       },
       {
         "component": "text-area",
