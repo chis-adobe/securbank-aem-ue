@@ -7,19 +7,169 @@ header .nav-wrapper {
   border-bottom: 1px solid var(--highlight-background-color);
 }
 
-header nav {
-  box-sizing: border-box;
-  display: grid;
-  grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
-  align-items: center;
-  gap: 0 2em;
-  margin: auto;
+header .nav-wrapper .nav-warning {
+  background-color: white;
+}
+
+header .nav-wrapper .nav-warning .yellow-bar {
+  height: 10px;
+  background-color: #fedf01;
+}
+
+header .nav-wrapper .nav-warning .warning-message {
+  display: flex;
+  gap: 10px;
   max-width: 1280px;
-  height: var(--nav-height);
-  padding: 0 1rem;
-  font-family: var(--body-font-family);
+  margin: auto;
+  padding: 10px 0;
+}
+
+header .nav-wrapper .nav-warning .warning-message .warning-icon::before {
+  content: "⚠️";
+  margin-right: 5px;
+  font-size: 1.2em;
+}
+
+header .nav-wrapper .nav-header {
+  background-color: #0051A5;
+}
+
+header .nav-wrapper .nav-header nav {
+  max-width: 1280px;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+header .nav-wrapper .nav-header nav ul {
+  display: flex;
+  list-style: none;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+header .nav-wrapper .nav-header nav ul li {
+  margin-right: 30px;
+  color: white;
+  font-size: 14px;
+  font-family: Roboto, Arial, sans-serif;;
+}
+
+header .nav-wrapper .nav-utils {
+  display: flex;
+  max-width: 1280px;
+  flex-direction: row-reverse;
+}
+
+header .nav-wrapper .nav-utils .header-content {
+  display: flex;
+}
+
+header .nav-wrapper .nav-main {
+  display: flex;
+  width: 100%;
+}
+
+header .nav-wrapper .nav-main .nav-container {
+  position: relative;
+  width: 100%;
+}
+
+header .nav-wrapper .nav-main .nav-container nav {
+  display: flex;
+  color: #006AC3;
+  background-color: white;
+  margin: auto;
+  height: 100px;
+}
+
+header .nav-wrapper .nav-main .nav-container nav .nav-brand {
+  display: none;
+}
+
+header .nav-wrapper .nav-main .nav-container picture {
+  position: absolute;
+  width: 1280px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 100px;
+}
+
+header .nav-wrapper .nav-main .nav-container picture img {
+  height: 100px;
+  width: auto;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 70px;
+  color: white;
+  width: 100%;
+  max-width: unset;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils .header-content {
+  width: 1280px;
+  margin: auto;
+  justify-content: flex-end;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils .search-trigger {
+  margin-right: 30px;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils .search-trigger .search-text {
+  padding-bottom: 5px;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils .search-trigger .search-text img {
+  width: 24px;
+  margin-right: 5px;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils .search-trigger .search-text {
+  border-bottom: solid white 1px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils .global-nav {
+  display: flex;
+  gap: 30px;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils .global-nav a {
+  color: white;
+}
+
+header .nav-wrapper .nav-main .nav-container .nav-utils .global-nav .secure-btn a {
+  color: black;
+  box-shadow: inset 0 0 0 1px #E8CF00;
+  border: 1px solid #fff;
+  border-radius: 1px;
+  padding: 12px 15px;
+  background-color: #fedf01;
+}
+
+header .nav-wrapper .nav-main .nav-container nav .nav-sections {
+  max-width: 1280px;
+  margin: auto;
+}
+
+header .nav-wrapper .nav-main .nav-container nav .nav-sections a {
+  font-size: 18px;
+}
+
+header .nav-wrapper .nav-main .nav-container nav .nav-tools {
+  display: none;
+}
+
+header .nav-wrapper .nav-main .nav-container nav .nav-auth {
+  display: none;
 }
 
 header nav[aria-expanded="true"] {

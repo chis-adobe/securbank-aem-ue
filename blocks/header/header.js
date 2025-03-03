@@ -208,7 +208,30 @@ export default async function decorate(block) {
   nav.append(auth);
 
   const navWrapper = document.createElement('div');
+  const navWarning = document.createElement('div');
+  const topNav = document.createElement('div');
+  const mainNav = document.createElement('div');
+  const mainNavContainer = document.createElement('div');
+  const utilsNav = document.createElement('div');
+
   navWrapper.className = 'nav-wrapper';
-  navWrapper.append(nav);
+  navWarning.className = 'nav-warning';
+  topNav.className ='nav-header';
+  mainNav.className ='nav-main';
+  mainNavContainer.className ='nav-container';
+  utilsNav.className = 'nav-utils';
+
+  navWarning.innerHTML = '<div class="yellow-bar"></div><div class="warning-message"><span class="warning-icon"></span><div class="warning-text"><span>Mail delays expected as Canada Post service resumes. If you receive printed statements for your account(s) in the mail, there may still be a delay in their delivery.</span> <span><a href="#">Learn how you can avoid this interruption.</a></span></div></div>';
+  topNav.innerHTML = '<nav aria-label="Banking"><div class="primary-nav"><ul id="header-lob" class="primary-nav-list active-loc"><li class="personal-banking active-loc"><a href="https://www.rbcroyalbank.com/personal.html" id="header-personal-banking" data-loc-id="personal-banking">Personal</a></li><li class="business-banking"><a href="https://www.rbcroyalbank.com/business/index.html" id="header-business-banking" data-loc-id="business-banking">Business</a></li><li class="wealth"><a href="https://www.rbcwealthmanagement.com/" id="header-wealth" data-loc-id="wealth">Wealth</a></li><li class="dropdown-overlay right institutional"><a href="https://www.rbcwealthmanagement.com/" id="header-wealth" data-loc-id="wealth">Institutional</a></li><li class="about-rbc"><a href="https://www.rbc.com/canada.html" id="header-about-rbc" data-loc-id="about-rbc">About RBC</a></li></ul></div><div class="secondary-nav"></div></div></nav>';
+  utilsNav.innerHTML = '<div class="header-content"><div class="search-trigger mousedown" aria-label="Open search dialog" role="button" tabindex="0"><span class="search-text"><img src="https://www.rbcroyalbank.com/dvl/v1.0/assets/images/icons/icon-search-inverse.svg" alt=""><span>Search RBC...</span></span></div><div class="global-nav"><div class="global-nav-item contact"><a href="#" class="standalone-link">Contact Us</a></div><div class="global-nav-item dropdown-overlay right language"><div class="dropdown-text" role="button" tabindex="0" aria-expanded="false" aria-controls="content-language" aria-label="Select language">(EN)</div></div><div class="global-nav-item secure-btn"><a href="#" class="btn secondary fl-r" role="button" aria-label="Sign in to R B C Online Banking">Sign In</a></div></div></div>';
+
+  navWrapper.append(navWarning);
+  navWrapper.append(topNav);
+  navWrapper.append(mainNav);
+
+  mainNav.append(mainNavContainer);
+  mainNavContainer.appendChild(nav.querySelector('picture'));
+  mainNavContainer.append(utilsNav);
+  mainNavContainer.append(nav);
   block.append(navWrapper);
 }
