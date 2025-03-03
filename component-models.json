@@ -279,6 +279,13 @@
         "multi": false
       },
       {
+        "component": "custom-asset-namespace:custom-asset",
+        "name": "image",
+        "label": "Image",
+        "configUrl": "https://client-rbc--securbank-aem-ue--chis-adobe.hlx.live/tools/dynamic-media/dm.config.json",
+        "valueType": "string"
+      },
+      {
         "id": "image-span",
         "fields": [
           {
