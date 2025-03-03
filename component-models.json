@@ -272,16 +272,11 @@
     "id": "hero",
     "fields": [
       {
-        "component": "custom-asset-namespace:custom-asset",
+        "component": "reference",
+        "valueType": "string",
         "name": "image",
         "label": "Image",
-        "configUrl": "https://client-rbc--securbank-aem-ue--chis-adobe.hlx.live/tools/dynamic-media/dm.config.json",
-        "valueType": "string"
-      },
-      {
-        "component": "custom-asset-namespace:custom-asset-mimetype",
-        "valueType": "string",
-        "name": "imageMimeType"
+        "multi": false
       },
       {
         "component": "text",
