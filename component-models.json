@@ -279,17 +279,13 @@
         "multi": false
       },
       {
-        "id": "radio-group",
+        "id": "image-span",
         "fields": [
           {
-            "component": "radio-group",
-            "label": "Image Span",
-            "name": "image-span",
-            "valueType": "string",
-            "options": [
-              { "name": "Full Width (Text Overlap)", "value": "full" },
-              { "name": "Half Width", "value": "half" }
-            ]
+            "component": "boolean",
+            "label": "Image Span Half Width",
+            "name": "half-width",
+            "valueType": "boolean"
           }
         ]
       },
