@@ -297,13 +297,6 @@
         "value": ""
       },
       {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "description",
-        "label": "Description",
-        "value": ""
-      },
-      {
         "component": "text-area",
         "name": "text",
         "value": "",
@@ -335,8 +328,8 @@
             "name": "Features",
             "children": [
               {
-                "name": "Show Login Box",
-                "value": "authbox"
+                "name": "Half Width Image",
+                "value": "halfwidthimage"
               }
             ]
           }
