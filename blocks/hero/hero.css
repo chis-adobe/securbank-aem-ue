@@ -152,6 +152,10 @@ main .hero picture::after {
   background: linear-gradient(to right, rgba(0 0 0 / 50%) 40%, rgba(0 0 0 / 0%));
 }
 
+main .hero.halfwidthimage picture::after {
+  background: none;
+}
+
 main .hero img {
   object-fit: cover;
   object-position: 0 0;
