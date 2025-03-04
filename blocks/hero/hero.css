@@ -71,7 +71,7 @@ main .hero .hero-body > div {
 main .hero h1 {
   max-width: 1280px;
   margin: 106px auto 0;
-  color: white;
+  color: blue;
   font: normal normal normal 48px/52px adobe-clean, sans-serif;
   width: 75%;
   margin: 0;
