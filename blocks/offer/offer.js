@@ -62,7 +62,6 @@ export async function decoratePostLogin(block, company) {
     });
 
   const itemId = `urn:aemconnection:${cfReq._path}/jcr:content/data/master`;
-  const subcompany = company.split(":")[1] ?? company;
 
   block.innerHTML = `
   <div class='banner-content' data-aue-resource=${itemId} data-aue-label="offer content fragment" data-aue-type="reference" data-aue-filter="cf">
@@ -71,7 +70,7 @@ export async function decoratePostLogin(block, company) {
           <p data-aue-prop="pretitle" data-aue-label="pretitle" data-aue-type="text" class='headline'>${cfReq.pretitle}</p>
           <p data-aue-prop="detail" data-aue-label="detail" data-aue-type="richtext" class='detail'>${cfReq.detail.plaintext}</p>
       </div>
-      <div class='${subcompany} banner-logo'>
+      <div class='banner-logo'>
       </div>
   </div>
 `;
