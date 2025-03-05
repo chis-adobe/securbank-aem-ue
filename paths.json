@@ -2,10 +2,10 @@
   "mappings": [
     "/content/securbank/:/",
     "/content/securbank/placeholders:/placeholders.json",
+    "/content/securbank/logins:/logins.json",
     "/content/securbank/loans/mortgagecalc:/mortgagecalc.json",
     "/graphql:/graphql",
     "/content/securbank.resource/icons/:/icons/",
-    "/tools/dynmaic-media/dm.config.json:/.helix/dm.config.json",
     "/content/securbank/configuration:/.helix/config.json"
   ],
   "includes": ["/content/securbank/"]
