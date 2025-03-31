@@ -692,11 +692,15 @@
     "id": "dynamic-media",
     "fields": [
       {
-        "component": "reference",
+        "component": "custom-asset-namespace:custom-asset",
         "valueType": "string",
-        "name": "image",
-        "label": "Image",
+        "name": "dm-image",
+        "label": "DM Image",
         "multi": false
+      },
+      {
+        "component": "custom-asset-namespace:custom-asset-mimetype",
+        "valueType": "string"
       },
       {
         "component": "text-input",

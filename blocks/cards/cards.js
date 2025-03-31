@@ -1,4 +1,4 @@
-import { createOptimizedPicture, decorateButtons } from '../../scripts/aem.js';
+import { createOptimizedPicture, decorateButtons } from '../../scripts/scripts.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
