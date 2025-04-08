@@ -269,6 +269,16 @@
     ]
   },
   {
+    "id": "policy",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
@@ -704,16 +714,6 @@
         "value": "",
         "label": "Dynamic Media URL",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "policy",
-    "fields": [
-      {
-        "component": "aem-content",
-        "name": "reference",
-        "label": "Reference"
       }
     ]
   }
