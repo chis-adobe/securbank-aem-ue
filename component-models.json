@@ -269,16 +269,6 @@
     ]
   },
   {
-    "id": "policy",
-    "fields": [
-      {
-        "component": "aem-content",
-        "name": "reference",
-        "label": "Reference"
-      }
-    ]
-  },
-  {
     "id": "hero",
     "fields": [
       {
@@ -426,6 +416,18 @@
         "name": "variation",
         "value": "master",
         "label": "Variation",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "policy",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "path",
+        "value": "",
+        "label": "Path",
         "valueType": "string"
       }
     ]
