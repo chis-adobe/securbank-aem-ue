@@ -60,7 +60,8 @@
       "image",
       "button",
       "title",
-      "dynamic-media"
+      "dynamic-media",
+      "policy"
     ]
   }
 ]
