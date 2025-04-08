@@ -706,5 +706,15 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "policy",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
   }
 ]
