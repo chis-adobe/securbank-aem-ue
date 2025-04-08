@@ -1,58 +1,65 @@
-/*
- * Fragment Block
- * Include content on a page as a fragment.
- * https://www.aem.live/developer/block-collection/fragment
- */
-
-import {
-  decorateMain,
-} from '../../scripts/scripts.js';
-
-import {
-  loadSections,
-} from '../../scripts/aem.js';
-
-/**
- * Loads a fragment.
- * @param {string} path The path to the fragment
- * @returns {HTMLElement} The root element of the fragment
- */
-export async function loadFragment(path) {
-  if (path && path.startsWith('/')) {
-    // eslint-disable-next-line no-param-reassign
-    path = path.replace(/(\.plain)?\.html/, '');
-    const resp = await fetch(`${path}.plain.html`);
-    if (resp.ok) {
-      const main = document.createElement('main');
-      main.innerHTML = await resp.text();
-
-      // reset base path for media to fragment base
-      const resetAttributeBase = (tag, attr) => {
-        main.querySelectorAll(`${tag}[${attr}^="./media_"]`).forEach((elem) => {
-          elem[attr] = new URL(elem.getAttribute(attr), new URL(path, window.location)).href;
-        });
-      };
-      resetAttributeBase('img', 'src');
-      resetAttributeBase('source', 'srcset');
-
-      decorateMain(main);
-      await loadSections(main);
-      return main;
-    }
-  }
-  return null;
-}
-
 export default async function decorate(block) {
-  const link = block.querySelector('a');
-  const path = link ? link.getAttribute('href') : block.textContent.trim();
-  const fragment = await loadFragment(path);
-  if (fragment) {
-    const fragmentSection = fragment.querySelector(':scope .section');
-    if (fragmentSection) {
-      block.classList.add(...fragmentSection.classList);
-      block.classList.remove('section');
-      block.replaceChildren(...fragmentSection.childNodes);
-    }
+  const props = [...block.children];
+  const path = props[0]?.textContent.trim();
+  const highlightIndex = Number(props[2]?.textContent.trim());
+  const cachebuster = Math.floor(Math.random() * 1000);
+
+  const main = document.createElement('div');
+  main.innerHTML = "Loading Rates";
+
+  const url = path ? `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRateByPath;path=${path};variation=main?ts=${cachebuster}`
+                : `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/securbank/AccountRatesList?ts=${cachebuster}`;
+
+  const resp = await fetch(url);
+  if (!resp.ok) {
+    return;
   }
+
+  const respJson = await resp.json();
+  const accountsJson = path ? [respJson.data.accountRatesByPath.item] : respJson.data.accountRatesList.items;
+
+  // Clear main div
+  main.innerHTML = "";
+
+  accountsJson.forEach(function (account) {
+    const accountDiv = document.createElement('div');
+    const header = document.createElement('div');
+    const rows = document.createElement('div');
+
+    header.classList.add("header");
+    rows.classList.add("rate-list");
+
+    if(!path) {
+      header.addEventListener('click', function() {
+        this.parentNode.classList.toggle("open");
+      });
+
+      const headerRow = document.createElement('div');
+      headerRow.innerHTML = '<span class="rate">Rate</span><span class="product">Product</span>';
+      rows.append(headerRow);
+    }
+
+    header.innerHTML = account.accountName;
+    accountDiv.append(header);
+    accountDiv.append(rows);
+
+    account.rates.forEach(function(rate, index) {
+      const rateDiv = document.createElement('div');
+
+      if(highlightIndex == index) {
+        rateDiv.classList.add("highlight");
+      }
+
+      rateDiv.innerHTML = `<span class="rate">${rate.rate.toFixed(2)}%</span><span class="product">${rate.accountType}</span>`;
+      rows.append(rateDiv);
+    });
+
+    main.append(accountDiv);
+  });
+
+  main.classList.add("rates-container");
+
+  block.closest('.rates-wrapper').classList.add(path ? "single" : "list");
+  block.innerHTML = "";
+  block.append(main);
 }
