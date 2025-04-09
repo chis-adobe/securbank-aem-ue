@@ -1,7 +1,6 @@
 export default async function decorate(block) {
   const props = [...block.children];
   const path = props[0]?.textContent.trim();
-  const highlightIndex = Number(props[2]?.textContent.trim());
   const cachebuster = Math.floor(Math.random() * 1000);
 
   const main = document.createElement('div');
@@ -45,10 +44,6 @@ export default async function decorate(block) {
 
     account.rates.forEach(function(rate, index) {
       const rateDiv = document.createElement('div');
-
-      if(highlightIndex == index) {
-        rateDiv.classList.add("highlight");
-      }
 
       rateDiv.innerHTML = `<span class="rate">${rate.rate.toFixed(2)}%</span><span class="product">${rate.accountType}</span>`;
       rows.append(rateDiv);
