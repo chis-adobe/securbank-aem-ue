@@ -38,7 +38,7 @@ export default async function decorate(block) {
   });
 
   let topicsImgs = topics.querySelectorAll("img");
-  descriptionImgs.forEach(function (topicsImg) {
+  topicsImgs.forEach(function (topicsImg) {
     topicsImg.src = "https://publish-p130746-e1298459.adobeaemcloud.com" + topicsImg.src;
   });
 
