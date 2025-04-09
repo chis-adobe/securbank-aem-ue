@@ -6,16 +6,10 @@ export default async function decorate(block) {
   const main = document.createElement('div');
   main.innerHTML = "Loading Policy";
 
-  url = path ? `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/CF-from-Guides/guidesCfByPath;path=${path};variation=main?ts=${cachebuster}`
-                : `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/CF-from-Guides/guidesCF?ts=${cachebuster}`;
+  const url = path ? `https://author-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/CF-from-Guides/guidesCfByPath;path=${path};variation=main?ts=${cachebuster}`
+                : `https://author-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/CF-from-Guides/guidesCF?ts=${cachebuster}`;
 
-  resp = await fetch(url);
-  if (!resp.ok) {
-    url = path ? `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/CF-from-Guides/guidesCfByPath;path=${path};variation=main?ts=${cachebuster}`
-                : `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/CF-from-Guides/guidesCF?ts=${cachebuster}`;
-  }
-
-  resp = await fetch(url);
+  const resp = await fetch(url);
   if (!resp.ok) {
     return;
   }
