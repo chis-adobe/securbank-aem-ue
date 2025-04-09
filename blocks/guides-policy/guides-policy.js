@@ -6,6 +6,10 @@ export default async function decorate(block) {
   const main = document.createElement('div');
   main.innerHTML = "Loading Policy";
 
+  if (!path) {
+    return;
+  }
+
   const url = path ? `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/CF-from-Guides/guidesCfByPath;path=${path};variation=main?ts=${cachebuster}`
                 : `https://publish-p130746-e1298459.adobeaemcloud.com/graphql/execute.json/CF-from-Guides/guidesCF?ts=${cachebuster}`;
 
