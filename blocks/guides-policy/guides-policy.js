@@ -29,8 +29,8 @@ export default async function decorate(block) {
   topics.classList.add("topics");
 
   title.innerHTML = policyJson.title;
-  descriptionDiv.append(policyJson.shortdesc.html);
-  topics.append(policyJson.topicData.html);
+  descriptionDiv.innerHTML = policyJson.shortdesc.html;
+  topics.innerHTML = policyJson.topicData.html;
 
   main.append(title);
   main.append(descriptionDiv);
