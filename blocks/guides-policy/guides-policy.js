@@ -32,15 +32,15 @@ export default async function decorate(block) {
   descriptionDiv.innerHTML = policyJson.shortdesc.html;
   topics.innerHTML = policyJson.topicData.html;
 
-  let descriptionImgs = descriptionDiv.getElementsByTagName("img");
-  for (let descriptionImg of descriptionImgs) {
+  let descriptionImgs = descriptionDiv.querySelectorAll("img");
+  descriptionImgs.forEach(function (descriptionImg) {
     descriptionImg.src = "https://publish-p130746-e1298459.adobeaemcloud.com" + descriptionImg.src;
-  }
+  });
 
-  let topicsImgs = descriptionDiv.getElementsByTagName("img");
-  for (let topicsImg of topicsImgs) {
+  let topicsImgs = topics.querySelectorAll("img");
+  descriptionImgs.forEach(function (topicsImg) {
     topicsImg.src = "https://publish-p130746-e1298459.adobeaemcloud.com" + topicsImg.src;
-  }
+  });
 
   main.append(title);
   main.append(descriptionDiv);
