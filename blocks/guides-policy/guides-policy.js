@@ -15,7 +15,7 @@ export default async function decorate(block) {
   }
 
   const respJson = await resp.json();
-  const policyJson = path ? [respJson.data.cfFromAemGuidesByPath.item] : respJson.data.cfFromAemGuidesList.items[0];
+  const policyJson = path ? respJson.data.cfFromAemGuidesByPath.item : respJson.data.cfFromAemGuidesList.items[0];
 
   // Clear main div
   main.innerHTML = "";
