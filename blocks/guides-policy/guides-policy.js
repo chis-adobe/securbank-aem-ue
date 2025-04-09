@@ -34,12 +34,14 @@ export default async function decorate(block) {
 
   let descriptionImgs = descriptionDiv.querySelectorAll("img");
   descriptionImgs.forEach(function (descriptionImg) {
-    descriptionImg.src = "https://publish-p130746-e1298459.adobeaemcloud.com" + descriptionImg.src;
+    const imgSrc = descriptionImg.getAttribute("data-tcx-image-src");
+    descriptionImg.src = "https://publish-p130746-e1298459.adobeaemcloud.com" + imgSrc;
   });
 
   let topicsImgs = topics.querySelectorAll("img");
   topicsImgs.forEach(function (topicsImg) {
-    topicsImg.src = "https://publish-p130746-e1298459.adobeaemcloud.com" + topicsImg.src;
+    const imgSrc = topicsImg.getAttribute("data-tcx-image-src");
+    topicsImg.src = "https://publish-p130746-e1298459.adobeaemcloud.com" + imgSrc;
   });
 
   main.append(title);
