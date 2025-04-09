@@ -421,7 +421,7 @@
     ]
   },
   {
-    "id": "policy",
+    "id": "guides-policy",
     "fields": [
       {
         "component": "aem-content-fragment",
