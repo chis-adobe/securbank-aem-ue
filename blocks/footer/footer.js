@@ -11,7 +11,15 @@ export default async function decorate(block) {
 
   // load footer fragment
   const footerPath = footerMeta.footer || '/footer';
-  const fragment = await loadFragment(footerPath);
+  
+  // Extract language locale and path from URL
+  const pathParts = window.location.pathname.split('/');
+  const localeIndex = pathParts.findIndex(part => ['en', 'fr'].includes(part));
+  const basePath = localeIndex >= 0 ? pathParts.slice(0, localeIndex + 1).join('/') : '/content/securbank/en';
+  
+  // Prepend base path to footer path
+  const localizedFooterPath = `${basePath}/${footerPath.substring(1)}`;
+  const fragment = await loadFragment(localizedFooterPath);
 
   // decorate footer DOM
   const footer = document.createElement('div');
