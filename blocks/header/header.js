@@ -116,12 +116,13 @@ export default async function decorate(block) {
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta).pathname : '/nav';
   
-  // Extract language locale from URL
+  // Extract language locale and path from URL
   const pathParts = window.location.pathname.split('/');
-  const languageLocale = pathParts[1] || 'en'; // Default to 'en' if no locale found
+  const localeIndex = pathParts.findIndex(part => ['en', 'fr'].includes(part));
+  const basePath = localeIndex >= 0 ? pathParts.slice(0, localeIndex + 1).join('/') : '/content/securbank/en';
   
-  // Prepend language locale to nav path
-  const localizedNavPath = `/${languageLocale}/${navPath.substring(1)}`;
+  // Prepend base path to nav path
+  const localizedNavPath = `${basePath}/${navPath.substring(1)}`;
   const fragment = await loadFragment(localizedNavPath);
 
   // decorate nav DOM
