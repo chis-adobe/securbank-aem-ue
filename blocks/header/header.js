@@ -115,7 +115,14 @@ export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta).pathname : '/nav';
-  const fragment = await loadFragment(navPath);
+  
+  // Extract language locale from URL
+  const pathParts = window.location.pathname.split('/');
+  const languageLocale = pathParts[1] || 'en'; // Default to 'en' if no locale found
+  
+  // Prepend language locale to nav path
+  const localizedNavPath = `/${languageLocale}/${navPath.substring(1)}`;
+  const fragment = await loadFragment(localizedNavPath);
 
   // decorate nav DOM
   const nav = document.createElement('nav');
