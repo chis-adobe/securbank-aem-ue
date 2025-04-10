@@ -1,13 +1,9 @@
-/* suppress nested section padding */
-.fragment-wrapper > .section {
-  padding-left: 0;
-  padding-right: 0;
+.guides-policy.block {
+  max-width: 1280px;
+  margin: auto;
 }
 
-.fragment-wrapper > .section:first-of-type {
-  padding-top: 0;
-}
-
-.fragment-wrapper > .section:last-of-type {
-  padding-bottom: 0;
+.guides-policy.block .header {
+  font-size: 40px;
+  padding-bottom: 20px;
 }
