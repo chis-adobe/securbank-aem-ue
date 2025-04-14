@@ -6,6 +6,10 @@ main .hero-container {
   padding: 0;
 }
 
+main .hero-container h1 {
+  color: yellow;
+}
+
 main .hero-container h3 {
 text-align: center;
 }
