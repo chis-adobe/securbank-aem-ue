@@ -263,3 +263,7 @@ main .section-heading {
   display: flex;
   justify-content: center;
 }
+
+.section.home p:has(img) img {
+  max-width: 600px;
+}
