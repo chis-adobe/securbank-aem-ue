@@ -258,3 +258,8 @@ main .section-heading {
   padding: 40px;
   font-size: 36px;
 }
+
+.section.home p:has(img) {
+  display: flex;
+  justify-content: center;
+}
