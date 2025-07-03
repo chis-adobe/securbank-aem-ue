@@ -7,11 +7,14 @@ import { getAEMPublish } from '../../scripts/endpointconfig.js';
 
 export default async function decorate(block) {
   const props = [...block.children];
-  const tag = props[0]?.textContent.trim() || 'listings';
+  const tag = props[0]?.textContent.trim() || '';
   const cachebuster = Math.floor(Math.random() * 1000);
   
   const aempublishurl = getAEMPublish();
-  const url = `${aempublishurl}/graphql/execute.json/securbank/ListingsByTag;tag=${tag}?ts=${cachebuster}`;
+  
+  // Use ListingList if no tag, otherwise use ListingsByTag
+  const endpoint = tag ? `ListingsByTag;tag=${tag}` : 'ListingList';
+  const url = `${aempublishurl}/graphql/execute.json/securbank/${endpoint}?ts=${cachebuster}`;
   
   try {
     const response = await fetch(url);
