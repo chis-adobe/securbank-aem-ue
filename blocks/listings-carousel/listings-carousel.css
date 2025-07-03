@@ -1,19 +1,110 @@
 /* Listings Carousel Styles */
 
 .listings-carousel {
-  /* TODO: Add carousel styles */
   padding: 2rem 0;
   background-color: #f5f5f5;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.listings-carousel .carousel-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
 }
 
 .listings-carousel .carousel-container {
-  /* TODO: Add carousel container styles */
+  position: relative;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.listings-carousel .carousel-track {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 1.5rem;
 }
 
 .listings-carousel .carousel-item {
-  /* TODO: Add carousel item styles */
+  flex: 0 0 calc(33.333% - 1rem);
+  min-width: 300px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.listings-carousel .listing-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.listings-carousel .listing-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.listings-carousel .listing-content {
+  padding: 1.5rem;
+}
+
+.listings-carousel .listing-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.listings-carousel .listing-address {
+  color: #666;
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+}
+
+.listings-carousel .listing-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.listings-carousel .listing-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #666;
 }
 
 .listings-carousel .carousel-nav {
-  /* TODO: Add carousel navigation styles */
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.listings-carousel .carousel-prev,
+.listings-carousel .carousel-next {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.listings-carousel .carousel-prev:hover,
+.listings-carousel .carousel-next:hover {
+  background: #0056b3;
+}
+
+.listings-carousel .carousel-prev:disabled,
+.listings-carousel .carousel-next:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 } 
