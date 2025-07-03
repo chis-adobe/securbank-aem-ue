@@ -1,33 +1,75 @@
 import { getAEMPublish } from '../../scripts/endpointconfig.js';
-import { initializeMaps } from '../../scripts/google-maps.js';
+import { initializeMaps, getUserCity } from '../../scripts/google-maps.js';
 
 /**
  * Listings Carousel Block
  * Displays real estate listings in a carousel format with Google Maps integration
  */
 
-export default async function decorate(block) {
-  const props = [...block.children];
-  const tag = props[0]?.textContent.trim() || '';
-  const cachebuster = Math.floor(Math.random() * 1000);
-  
+// Function to fetch listings from API
+async function fetchListings(endpoint, cachebuster) {
   const aempublishurl = getAEMPublish();
-  
-  // Use ListingList if no tag, otherwise use ListingsByTag
-  const endpoint = tag ? `ListingsByTag;tag=${tag}` : 'ListingList';
   const url = `${aempublishurl}/graphql/execute.json/securbank/${endpoint}?ts=${cachebuster}`;
   
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  
+  const data = await response.json();
+  return data.data?.listingList?.items || [];
+}
+
+export default async function decorate(block) {
+  const props = [...block.children];
+  const configuredTag = props[0]?.textContent.trim() || '';
+  const cachebuster = Math.floor(Math.random() * 1000);
+  
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    let listings = [];
+    let usedTag = configuredTag;
+    
+    // First, try with configured tag if provided
+    if (configuredTag) {
+      const endpoint = `ListingsByTag;tag=${configuredTag}`;
+      listings = await fetchListings(endpoint, cachebuster);
+      console.log(`Tried configured tag "${configuredTag}": ${listings.length} listings found`);
     }
     
-    const data = await response.json();
-    const listings = data.data?.listingList?.items || [];
+    // If no listings found and no tag configured, try user's city
+    if (listings.length === 0 && !configuredTag) {
+      try {
+        const userCity = await getUserCity();
+        const endpoint = `ListingsByTag;tag=${userCity}`;
+        listings = await fetchListings(endpoint, cachebuster);
+        usedTag = userCity;
+        console.log(`Tried user's city "${userCity}": ${listings.length} listings found`);
+      } catch (error) {
+        console.warn('Could not get user location:', error);
+      }
+    }
     
+    // If still no listings, try the no results API
     if (listings.length === 0) {
-      block.innerHTML = '<p>No listings found.</p>';
+      try {
+        const endpoint = 'NoResultsListings';
+        listings = await fetchListings(endpoint, cachebuster);
+        console.log(`Tried no results API: ${listings.length} listings found`);
+      } catch (error) {
+        console.warn('No results API failed:', error);
+      }
+    }
+    
+    // If still no listings, show a message
+    if (listings.length === 0) {
+      block.innerHTML = `
+        <div class="listings-carousel">
+          <h2 class="carousel-title">Featured Listings</h2>
+          <p class="no-listings-message">
+            No listings available at the moment. Please check back later.
+          </p>
+        </div>
+      `;
       return;
     }
     
@@ -35,10 +77,14 @@ export default async function decorate(block) {
     const carousel = document.createElement('div');
     carousel.classList.add('listings-carousel');
     
-    // Add title
+    // Add title with context about what was used
     const titleElement = document.createElement('h2');
     titleElement.classList.add('carousel-title');
-    titleElement.textContent = 'Featured Listings';
+    if (usedTag && usedTag !== configuredTag) {
+      titleElement.textContent = `Featured Listings in ${usedTag}`;
+    } else {
+      titleElement.textContent = 'Featured Listings';
+    }
     carousel.appendChild(titleElement);
     
     // Create carousel container
@@ -106,7 +152,12 @@ export default async function decorate(block) {
     
   } catch (error) {
     console.error('Error loading listings:', error);
-    block.innerHTML = '<p>Error loading listings. Please try again later.</p>';
+    block.innerHTML = `
+      <div class="listings-carousel">
+        <h2 class="carousel-title">Featured Listings</h2>
+        <p class="error-message">Error loading listings. Please try again later.</p>
+      </div>
+    `;
   }
 }
 

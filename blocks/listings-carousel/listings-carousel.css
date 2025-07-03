@@ -131,6 +131,19 @@
   cursor: not-allowed;
 }
 
+.listings-carousel .no-listings-message,
+.listings-carousel .error-message {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.listings-carousel .error-message {
+  color: #dc3545;
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .listings-carousel {

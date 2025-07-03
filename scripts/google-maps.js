@@ -36,6 +36,65 @@ export function loadGoogleMapsAPI() {
 }
 
 /**
+ * Get user's city from their current location
+ * @returns {Promise<string>} Promise that resolves to the city name
+ */
+export function getUserCity() {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      reject(new Error('Geolocation is not supported by this browser'));
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          await loadGoogleMapsAPI();
+          
+          const geocoder = new google.maps.Geocoder();
+          const latlng = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          geocoder.geocode({ location: latlng }, (results, status) => {
+            if (status === 'OK' && results[0]) {
+              // Find the city from address components
+              const addressComponents = results[0].address_components;
+              const cityComponent = addressComponents.find(component => 
+                component.types.includes('locality') || 
+                component.types.includes('administrative_area_level_2')
+              );
+              
+              if (cityComponent) {
+                resolve(cityComponent.long_name);
+              } else {
+                // Fallback: try to extract city from formatted address
+                const formattedAddress = results[0].formatted_address;
+                const cityMatch = formattedAddress.match(/^([^,]+)/);
+                resolve(cityMatch ? cityMatch[1] : 'Unknown City');
+              }
+            } else {
+              reject(new Error('Could not determine city from location'));
+            }
+          });
+        } catch (error) {
+          reject(error);
+        }
+      },
+      (error) => {
+        reject(new Error(`Geolocation error: ${error.message}`));
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 10000,
+        maximumAge: 300000 // 5 minutes
+      }
+    );
+  });
+}
+
+/**
  * Create a map for a specific address
  * @param {HTMLElement} container - The container element for the map
  * @param {string} address - The address to geocode and display
