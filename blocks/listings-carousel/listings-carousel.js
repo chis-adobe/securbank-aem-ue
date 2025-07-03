@@ -52,7 +52,7 @@ export default async function decorate(block) {
     // If still no listings, try the no results API
     if (listings.length === 0) {
       try {
-        const endpoint = 'NoResultsListings';
+        const endpoint = 'ListingList';
         listings = await fetchListings(endpoint, cachebuster);
         console.log(`Tried no results API: ${listings.length} listings found`);
       } catch (error) {
