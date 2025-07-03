@@ -1,0 +1,19 @@
+/* Listings Carousel Styles */
+
+.listings-carousel {
+  /* TODO: Add carousel styles */
+  padding: 2rem 0;
+  background-color: #f5f5f5;
+}
+
+.listings-carousel .carousel-container {
+  /* TODO: Add carousel container styles */
+}
+
+.listings-carousel .carousel-item {
+  /* TODO: Add carousel item styles */
+}
+
+.listings-carousel .carousel-nav {
+  /* TODO: Add carousel navigation styles */
+} 
