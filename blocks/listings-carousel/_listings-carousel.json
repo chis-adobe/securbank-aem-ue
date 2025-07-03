@@ -32,7 +32,6 @@
           "name": "tags",
           "value": "listings",
           "label": "Tag",
-          "valueType": "string",
           "rootPath": "/content/cq:tags/securbank"
         },
         {
