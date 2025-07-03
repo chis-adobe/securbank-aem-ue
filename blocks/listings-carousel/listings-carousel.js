@@ -40,10 +40,11 @@ export default async function decorate(block) {
     if (listings.length === 0 && !configuredTag) {
       try {
         const userCity = await getUserCity();
-        const endpoint = `ListingsByTag;tag=${userCity}`;
+        const cityTag = userCity.toLowerCase();
+        const endpoint = `ListingsByTag;tag=${cityTag}`;
         listings = await fetchListings(endpoint, cachebuster);
-        usedTag = userCity;
-        console.log(`Tried user's city "${userCity}": ${listings.length} listings found`);
+        usedTag = userCity; // Keep original case for display
+        console.log(`Tried user's city "${cityTag}": ${listings.length} listings found`);
       } catch (error) {
         console.warn('Could not get user location:', error);
       }
