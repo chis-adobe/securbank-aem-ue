@@ -1,8 +1,9 @@
 import { getAEMPublish } from '../../scripts/endpointconfig.js';
+import { initializeMaps } from '../../scripts/google-maps.js';
 
 /**
  * Listings Carousel Block
- * Displays real estate listings in a carousel format
+ * Displays real estate listings in a carousel format with Google Maps integration
  */
 
 export default async function decorate(block) {
@@ -74,6 +75,7 @@ export default async function decorate(block) {
           <div class="listing-description">
             ${listing.description?.html || listing.description?.plaintext || ''}
           </div>
+          <div class="listing-map" data-address="${listing.address}"></div>
         </div>
       `;
       
@@ -99,9 +101,32 @@ export default async function decorate(block) {
     // Initialize carousel functionality
     initializeCarousel(carousel);
     
+    // Initialize maps after carousel is set up
+    initializeListingMaps();
+    
   } catch (error) {
     console.error('Error loading listings:', error);
     block.innerHTML = '<p>Error loading listings. Please try again later.</p>';
+  }
+}
+
+// Function to initialize maps for all listings
+async function initializeListingMaps() {
+  try {
+    // Get all map containers
+    const mapContainers = document.querySelectorAll('.listing-map');
+    
+    // Create map configurations
+    const mapConfigs = Array.from(mapContainers).map(container => ({
+      container,
+      address: container.getAttribute('data-address'),
+      options: {} // Use default options
+    })).filter(config => config.address); // Only include containers with addresses
+    
+    // Initialize all maps
+    await initializeMaps(mapConfigs);
+  } catch (error) {
+    console.error('Error initializing listing maps:', error);
   }
 }
 
