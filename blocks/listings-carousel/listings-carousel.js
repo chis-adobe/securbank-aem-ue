@@ -7,8 +7,7 @@ import { getAEMPublish } from '../../scripts/endpointconfig.js';
 
 export default async function decorate(block) {
   const props = [...block.children];
-  const title = props[0]?.textContent.trim() || 'Featured Listings';
-  const tag = props[1]?.textContent.trim() || 'listings';
+  const tag = props[0]?.textContent.trim() || 'listings';
   const cachebuster = Math.floor(Math.random() * 1000);
   
   const aempublishurl = getAEMPublish();
@@ -35,7 +34,7 @@ export default async function decorate(block) {
     // Add title
     const titleElement = document.createElement('h2');
     titleElement.classList.add('carousel-title');
-    titleElement.textContent = title;
+    titleElement.textContent = 'Featured Listings';
     carousel.appendChild(titleElement);
     
     // Create carousel container
