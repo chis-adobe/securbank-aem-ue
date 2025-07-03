@@ -706,17 +706,5 @@
         "valueType": "string"
       }
     ]
-  },
-  {
-    "id": "listings-carousel",
-    "fields": [
-      {
-        "component": "aem-tag",
-        "name": "tags",
-        "value": "listings",
-        "label": "Tag",
-        "rootPath": "/content/cq:tags/securbank"
-      }
-    ]
   }
 ]
