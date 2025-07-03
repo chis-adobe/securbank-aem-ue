@@ -23,7 +23,6 @@
         {
           "component": "aem-tag",
           "name": "tags",
-          "value": "",
           "label": "Tag",
           "rootPath": "/content/cq:tags/securbank"
         }
