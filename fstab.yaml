@@ -1,5 +1,5 @@
 mountpoints:
   /: 
-    url: https://author-p138110-e1400617.adobeaemcloud.com/bin/franklin.delivery/chis-adobe/securbank-aem-ue/main
+    url: https://author-p138110-e1400617.adobeaemcloud.com/bin/franklin.delivery/chis-adobe/securbank-aem-ue/client-minto
     type: markup
     suffix: ".html?wcmmode=disabled"
