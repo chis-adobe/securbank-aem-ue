@@ -101,15 +101,30 @@ export default async function decorate(block) {
       const card = document.createElement('div');
       card.classList.add('carousel-item', 'listing-card');
       
-      const imageUrl = listing.image?._publishUrl || listing.image?._dynamicUrl || '';
+      const imageUrl = listing.image?._publishUrl || '';
+      const dynamicUrl = listing.image?._dynamicUrl || '';
+      const imageAlt = listing.image?.title || listing.title || 'Property listing image';
       const formattedRent = new Intl.NumberFormat('en-CA', {
         style: 'currency',
         currency: 'CAD'
       }).format(listing.monthlyRent);
       
+      // Create responsive image with srcset
+      let imageHtml = '';
+      if (dynamicUrl) {
+        imageHtml = `<img src="${dynamicUrl}?width=200&height=150&fit=crop&preferwebp=true" 
+          srcset="${dynamicUrl}?width=200&height=150&fit=crop&preferwebp=true 200w,
+                  ${dynamicUrl}?width=300&height=225&fit=crop&preferwebp=true 300w,
+                  ${dynamicUrl}?width=400&height=300&fit=crop&preferwebp=true 400w"
+          sizes="(max-width: 768px) 200px, (max-width: 1024px) 300px, 400px"
+          alt="${imageAlt}" loading="lazy">`;
+      } else if (imageUrl) {
+        imageHtml = `<img src="${imageUrl}" alt="${imageAlt}" loading="lazy">`;
+      }
+      
       card.innerHTML = `
         <div class="listing-image">
-          ${imageUrl ? `<img src="${imageUrl}" alt="${listing.title}" loading="lazy">` : ''}
+          ${imageHtml}
         </div>
         <div class="listing-content">
           <h3 class="listing-title">${listing.title}</h3>
