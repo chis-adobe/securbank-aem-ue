@@ -86,6 +86,13 @@ function decorateUnAuthenticatedState(parent) {
 export default async function decorate(block) {
   let row = block.firstElementChild;
   const bg = row.querySelector('picture');
+  if (bg) {
+    // Set eager loading for hero image to improve LCP
+    const img = bg.querySelector('img');
+    if (img) {
+      img.setAttribute('loading', 'eager');
+    }
+  }
   block.append(bg);
   row.remove();
   const bgP = block.closest('p');
