@@ -1,0 +1,37 @@
+# Adobe Edge Delivery edge.config.yaml example
+
+rules:
+  # Long cache for web-optimized (Dynamic Media) images
+  - url: '^/adobe/dynamicmedia/deliver/.*'
+    cache:
+      ttl: 31536000             # 1 year in seconds
+      headers:
+        Cache-Control: 'public, max-age=31536000, immutable'
+
+  # Long cache for other asset types (e.g., /content/dam/)
+  - url: '^/content/dam/.*\.(jpg|jpeg|png|webp|svg|gif)$'
+    cache:
+      ttl: 31536000
+      headers:
+        Cache-Control: 'public, max-age=31536000, immutable'
+
+  # Moderate cache for CSS and JS
+  - url: '^/.*\.(css|js)$'
+    cache:
+      ttl: 86400                # 1 day
+      headers:
+        Cache-Control: 'public, max-age=86400'
+
+  # Short cache for HTML
+  - url: '^/.*\.html$'
+    cache:
+      ttl: 300                  # 5 minutes
+      headers:
+        Cache-Control: 'public, max-age=300'
+
+# Optionally, a default rule for unmatched requests
+  - url: '.*'
+    cache:
+      ttl: 60                   # 1 minute
+      headers:
+        Cache-Control: 'public, max-age=60'
