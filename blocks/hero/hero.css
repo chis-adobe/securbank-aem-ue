@@ -17,6 +17,10 @@ main .hero {
   color: var(--background-color);
 }
 
+main .hero img {
+  object-position: unset;
+}
+
 main .hero .hero-body {
   max-width: 1280px;
   margin-left: auto;
