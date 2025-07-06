@@ -17,7 +17,7 @@ main .hero {
   color: var(--background-color);
 }
 
-main .hero img {
+main .hero.block picture img {
   object-position: unset;
 }
 
