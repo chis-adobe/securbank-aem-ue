@@ -22,42 +22,42 @@ async function fetchListings(endpoint, cachebuster) {
 
 export default async function decorate(block) {
   const props = [...block.children];
-  const configuredTag = props[0]?.textContent.trim() || '';
+  const personalization = props[0]?.textContent.trim() || '';
+  const configuredTag = props[1]?.textContent.trim() || '';
   const cachebuster = Math.floor(Math.random() * 1000);
   
   try {
     let listings = [];
     let usedTag = configuredTag;
+    let showLocationTitle = false;
     
-    // First, try with configured tag if provided
-    if (configuredTag) {
+    // Only use personalization if a valid option is selected
+    if (personalization === 'taxonomy' && configuredTag) {
       const endpoint = `ListingsByTag;tag=${configuredTag}`;
       listings = await fetchListings(endpoint, cachebuster);
       console.log(`Tried configured tag "${configuredTag}": ${listings.length} listings found`);
-    }
-    
-    // If no listings found and no tag configured, try user's city
-    if (listings.length === 0 && !configuredTag) {
+    } else if (personalization === 'geolocation') {
       try {
         const userCity = await getUserCity();
         const cityTag = userCity.toLowerCase();
         const endpoint = `ListingsByTag;tag=${cityTag}`;
         listings = await fetchListings(endpoint, cachebuster);
         usedTag = userCity; // Keep original case for display
+        showLocationTitle = true;
         console.log(`Tried user's city "${cityTag}": ${listings.length} listings found`);
       } catch (error) {
         console.warn('Could not get user location:', error);
       }
     }
     
-    // If still no listings, try the no results API
+    // If no listings found or no valid personalization, use the fallback API
     if (listings.length === 0) {
       try {
         const endpoint = 'ListingList';
         listings = await fetchListings(endpoint, cachebuster);
-        console.log(`Tried no results API: ${listings.length} listings found`);
+        console.log(`Tried ListingList API: ${listings.length} listings found`);
       } catch (error) {
-        console.warn('No results API failed:', error);
+        console.warn('ListingList API failed:', error);
       }
     }
     
@@ -81,7 +81,7 @@ export default async function decorate(block) {
     // Add title with context about what was used
     const titleElement = document.createElement('h2');
     titleElement.classList.add('carousel-title');
-    if (usedTag && usedTag !== configuredTag) {
+    if (showLocationTitle && usedTag) {
       titleElement.textContent = `Featured Listings in ${usedTag}`;
     } else {
       titleElement.textContent = 'Featured Listings';

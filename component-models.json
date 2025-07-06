@@ -711,6 +711,21 @@
     "id": "listings-carousel",
     "fields": [
       {
+        "component": "select",
+        "name": "personalization",
+        "label": "Personalize Listings",
+        "options": [
+          {
+            "name": "Taxonomy",
+            "value": "taxonomy"
+          },
+          {
+            "name": "Geolocation",
+            "value": "geolocation"
+          }
+        ]
+      },
+      {
         "component": "aem-tag",
         "name": "tags",
         "label": "Tag",
