@@ -729,7 +729,8 @@
         "component": "aem-tag",
         "name": "tags",
         "label": "Tag",
-        "rootPath": "/content/cq:tags/securbank"
+        "rootPath": "/content/cq:tags/securbank",
+        "condition": { "===": [{"var" : "personalization"}, "taxonomy"] }
       }
     ]
   }
