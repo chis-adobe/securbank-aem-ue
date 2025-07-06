@@ -91,6 +91,7 @@ export default async function decorate(block) {
     const img = bg.querySelector('img');
     if (img) {
       img.setAttribute('loading', 'eager');
+      img.setAttribute('fetchpriority', 'high');
     }
   }
   block.append(bg);
