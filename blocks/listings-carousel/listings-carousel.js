@@ -56,6 +56,8 @@ export default async function decorate(block) {
         const endpoint = 'ListingList';
         listings = await fetchListings(endpoint, cachebuster);
         console.log(`Tried ListingList API: ${listings.length} listings found`);
+        // Reset city since we're showing all listings, not city-specific ones
+        city = '';
       } catch (error) {
         console.warn('ListingList API failed:', error);
       }
