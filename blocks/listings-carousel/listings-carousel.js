@@ -28,7 +28,7 @@ export default async function decorate(block) {
   
   try {
     let listings = [];
-    let usedTag = configuredTag;
+    let city = configuredTag;
     let showLocationTitle = false;
     
     // Only use personalization if a valid option is selected
@@ -42,7 +42,7 @@ export default async function decorate(block) {
         const cityTag = userCity.toLowerCase();
         const endpoint = `ListingsByTag;tag=${cityTag}`;
         listings = await fetchListings(endpoint, cachebuster);
-        usedTag = userCity; // Keep original case for display
+        city = userCity; // Keep original case for display
         showLocationTitle = true;
         console.log(`Tried user's city "${cityTag}": ${listings.length} listings found`);
       } catch (error) {
@@ -81,8 +81,8 @@ export default async function decorate(block) {
     // Add title with context about what was used
     const titleElement = document.createElement('h2');
     titleElement.classList.add('carousel-title');
-    if (showLocationTitle && usedTag) {
-      titleElement.textContent = `Featured Listings in ${usedTag}`;
+    if (city) {
+      titleElement.textContent = `Featured Listings in ${city}`;
     } else {
       titleElement.textContent = 'Featured Listings';
     }
