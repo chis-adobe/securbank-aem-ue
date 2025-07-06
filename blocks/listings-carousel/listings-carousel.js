@@ -29,7 +29,6 @@ export default async function decorate(block) {
   try {
     let listings = [];
     let city = configuredTag;
-    let showLocationTitle = false;
     
     // Only use personalization if a valid option is selected
     if (personalization === 'taxonomy' && configuredTag) {
@@ -43,7 +42,6 @@ export default async function decorate(block) {
         const endpoint = `ListingsByTag;tag=${cityTag}`;
         listings = await fetchListings(endpoint, cachebuster);
         city = userCity; // Keep original case for display
-        showLocationTitle = true;
         console.log(`Tried user's city "${cityTag}": ${listings.length} listings found`);
       } catch (error) {
         console.warn('Could not get user location:', error);
