@@ -121,7 +121,7 @@
   justify-content: flex-end;
 }
 
-.cta-button {
+.listing-ctas a.cta-button {
   padding: 0.75rem 1.5rem;
   text-decoration: none;
   font-weight: 500;
@@ -131,24 +131,24 @@
   flex: 0 1 auto;
 }
 
-.email-cta {
+.listing-ctas a.email-cta {
   background-color: #000080;
   color: #fff;
   border: 2px solid #000080;
 }
 
-.email-cta:hover {
+.listing-ctas a.email-cta:hover {
   background-color: #fff;
   color: #000080;
 }
 
-.community-cta {
+.listing-ctas a.community-cta {
   background-color: #efb51c;
   color: #000080;
   border: 2px solid #efb51c;
 }
 
-.community-cta:hover {
+.listing-ctas a.community-cta:hover {
   background-color: #fff;
   color: #efb51c;
   border-color: #efb51c;
@@ -237,7 +237,7 @@
     justify-content: flex-start;
   }
   
-  .cta-button {
+  .listing-ctas a.cta-button {
     text-align: center;
     width: 100%;
   }
