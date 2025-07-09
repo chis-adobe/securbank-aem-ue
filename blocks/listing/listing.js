@@ -85,14 +85,15 @@ export default async function decorate(block) {
         )
       ),
       
-      // Column 3: Main Image
+      // Column 3: Main Image and Community Closeout
       div({ class: 'listing-col col3' },
         img({ 
           class: 'listing-image', 
           src: listing.image?._publishUrl, 
           alt: listing.title || 'Property image',
           loading: 'lazy'
-        })
+        }),
+        div({ class: 'community-closeout' }, 'Community Closeout')
       )
     );
     

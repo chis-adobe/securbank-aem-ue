@@ -44,7 +44,7 @@
 
 .listing-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   border: none;
   margin: 0;
@@ -118,6 +118,7 @@
   margin-top: auto;
   padding-top: 1rem;
   border-top: 2px solid #D4AF37;
+  justify-content: flex-end;
 }
 
 .cta-button {
@@ -127,7 +128,7 @@
   border-radius: 25px;
   transition: all 0.2s ease;
   text-align: center;
-  flex: 1;
+  flex: 0 1 auto;
 }
 
 .email-cta {
@@ -151,6 +152,16 @@
   background-color: #fff;
   color: #efb51c;
   border-color: #efb51c;
+}
+
+.community-closeout {
+  background-color: #efb51c;
+  color: #000080;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-top: 1px solid #000;
 }
 
 .listing-region {
@@ -221,13 +232,14 @@
   }
   
   .listing-image {
-    height: 300px;
+    height: auto;
     width: 100%;
   }
   
   .listing-ctas {
     flex-direction: column;
     gap: 0.5rem;
+    justify-content: flex-start;
   }
   
   .cta-button {
