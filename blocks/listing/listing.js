@@ -106,4 +106,6 @@ export default async function decorate(block) {
       <div class="listing-block">
         <p class="error-message">Error loading listing. Please try again later.</p>
       </div>
-    `
+    `;
+  }
+} 
