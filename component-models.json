@@ -731,24 +731,21 @@
         "label": "Tag",
         "rootPath": "/content/cq:tags/securbank",
         "condition": { "===": [{"var" : "personalization"}, "taxonomy"] }
-      },
-      {
-        "component": "container",
-        "label": "Listing",
-        "name": "listing",
+      }
+    ]
+  },
+  {
+    "id": "listing",
+    "fields": [
+      {          
+        "component": "aem-content",
+        "name": "listingPath",
+        "label": "Listing Path",
+        "description": "Select the Listing CF to display on the page",
         "valueType": "string",
-        "fields": [
-          {          
-            "component": "aem-content",
-            "name": "listingPath",
-            "label": "Listing Path",
-            "description": "Select the Listing CF to display on the page",
-            "valueType": "string",
-            "validation": {
-                "rootPath": "/content/dam/minto/en/listings"
-            }
-          }
-        ]
+        "validation": {
+            "rootPath": "/content/dam/minto/en/listings"
+        }
       }
     ]
   }
