@@ -55,24 +55,33 @@ export default async function decorate(block) {
           alt: listing.title || 'Property thumbnail',
           loading: 'lazy'
         }),
-        div({ 
-          class: 'listing-description',
-          innerHTML: listing.description?.html || listing.description?.plaintext || ''
-        })
+        (() => {
+          const descDiv = div({ class: 'listing-description' });
+          descDiv.innerHTML = listing.description?.html || listing.description?.plaintext || '';
+          return descDiv;
+        })()
       ),
       
-      // Column 2: Property Details
+      // Column 2: Property Details and CTAs
       div({ class: 'listing-col col2' },
-        h1({ class: 'listing-title' }, listing.title),
         p({ class: 'listing-address' }, listing.address),
         div({ class: 'listing-details' },
-          span({ class: 'listing-bed' }, `${listing.bedrooms} bed`),
-          span({ class: 'listing-bath' }, `${listing.bathrooms} bath`),
-          span({ class: 'listing-rent' }, `${formattedRent}/month`)
+          div({ class: 'listing-detail-item' },
+            span({ class: 'detail-label' }, 'Home Type:'),
+            span({ class: 'detail-value' }, listing.type || 'N/A')
+          ),
+          div({ class: 'listing-detail-item' },
+            span({ class: 'detail-label' }, 'Bedrooms:'),
+            span({ class: 'detail-value' }, `${listing.bedrooms} bed`)
+          ),
+          div({ class: 'listing-detail-item' },
+            span({ class: 'detail-label' }, 'Starting From:'),
+            span({ class: 'detail-value' }, `${formattedRent}/month`)
+          )
         ),
-        div({ class: 'listing-region' },
-          p({ class: 'region-label' }, 'Region:'),
-          p({ class: 'region-value' }, listing.region?.[0]?.split('/').pop() || 'N/A')
+        div({ class: 'listing-ctas' },
+          a({ href: '#', class: 'cta-button email-cta' }, 'Email'),
+          a({ href: '#', class: 'cta-button community-cta' }, 'Community')
         )
       ),
       
