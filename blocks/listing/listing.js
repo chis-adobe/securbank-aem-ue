@@ -1,5 +1,4 @@
-import { getMetadata } from '../../scripts/aem.js';
-import { isAuthorEnvironment } from '../../scripts/scripts.js';
+import { getAEMPublish } from '../../scripts/endpointconfig.js';
 import { div, img, h1, p, span } from '../../scripts/dom-helpers.js';
 
 /**
