@@ -1,5 +1,5 @@
 import { getAEMPublish } from '../../scripts/endpointconfig.js';
-import { div, img, h1, p, span } from '../../scripts/dom-helpers.js';
+import { div, img, h1, p, span, a } from '../../scripts/dom-helpers.js';
 
 /**
  * Listing Block
@@ -106,6 +106,4 @@ export default async function decorate(block) {
       <div class="listing-block">
         <p class="error-message">Error loading listing. Please try again later.</p>
       </div>
-    `;
-  }
-} 
+    `
