@@ -711,6 +711,11 @@
     "id": "dynamic-offer",
     "fields": [
       {
+        "component": "text",
+        "name": "eventName",
+        "label": "Event Name"
+      },
+      {
         "component": "number",
         "name": "cost",
         "label": "Cost"
@@ -719,6 +724,16 @@
         "component": "number",
         "name": "apr",
         "label": "APR Percentage"
+      },
+      {
+        "component": "checkbox",
+        "name": "hideBlackGalaxy",
+        "label": "Hide Black Galaxy"
+      },
+      {
+        "component": "checkbox",
+        "name": "hideWhiteGalaxy",
+        "label": "Hide White Galaxy"
       }
     ]
   }
