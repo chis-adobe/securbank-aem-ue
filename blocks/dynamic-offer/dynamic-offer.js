@@ -21,19 +21,7 @@ export default async function decorate(block) {
   const hideBlackGalaxyValue = hideBlackGalaxy ? '1' : '0';
   const hideWhiteGalaxyValue = hideWhiteGalaxy ? '1' : '0';
   
-  const params = new URLSearchParams({
-    '$hideBlackGalaxy': hideBlackGalaxyValue,
-    '$eventName': eventName,
-    '$cost': cost,
-    '$aprCost': apr,
-    '$hideWhiteGalaxy': hideWhiteGalaxyValue,
-    'wid': '2000',
-    'hei': '2000',
-    'qlt': '100',
-    'fit': 'constrain'
-  });
-
-  const dynamicUrl = `${baseUrl}?${params.toString()}`;
+  const dynamicUrl = `${baseUrl}?$hideBlackGalaxy=${hideBlackGalaxyValue}&$eventName=${encodeURIComponent(eventName)}&$cost=${cost}&$aprCost=${apr}&$hideWhiteGalaxy=${hideWhiteGalaxyValue}&wid=2000&hei=2000&qlt=100&fit=constrain`;
 
   // Render the image
   block.innerHTML = `
