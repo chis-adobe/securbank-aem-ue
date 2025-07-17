@@ -726,12 +726,12 @@
         "label": "APR Percentage"
       },
       {
-        "component": "checkbox",
+        "component": "boolean",
         "name": "hideBlackGalaxy",
         "label": "Hide Black Galaxy"
       },
       {
-        "component": "checkbox",
+        "component": "boolean",
         "name": "hideWhiteGalaxy",
         "label": "Hide White Galaxy"
       }
