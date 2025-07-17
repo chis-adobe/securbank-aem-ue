@@ -1,5 +1,3 @@
-import { div, img } from '../../scripts/dom-helpers.js';
-
 /**
  * Dynamic Offer Block
  * Prompts user for cost and APR values and generates a dynamic image URL
