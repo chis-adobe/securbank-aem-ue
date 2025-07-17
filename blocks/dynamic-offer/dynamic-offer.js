@@ -8,8 +8,8 @@ export default async function decorate(block) {
   const eventName = props[0]?.textContent?.trim() || 'Black Friday Event';
   const cost = props[1]?.textContent?.trim();
   const apr = props[2]?.textContent?.trim();
-  const hideBlackGalaxy = props[3]?.textContent?.trim() === 'true';
-  const hideWhiteGalaxy = props[4]?.textContent?.trim() === 'true';
+  const hideBlackGalaxy = props[3]?.textContent?.includes('true');
+  const hideWhiteGalaxy = props[4]?.textContent?.includes('true');
 
   if (!cost || !apr) {
     block.innerHTML = '<p class="error-message">Please provide both cost and APR values in the block configuration.</p>';
