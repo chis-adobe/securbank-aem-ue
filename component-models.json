@@ -706,5 +706,20 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "dynamic-offer",
+    "fields": [
+      {
+        "component": "number",
+        "name": "cost",
+        "label": "Cost"
+      },
+      {
+        "component": "number",
+        "name": "apr",
+        "label": "APR Percentage"
+      }
+    ]
   }
 ]

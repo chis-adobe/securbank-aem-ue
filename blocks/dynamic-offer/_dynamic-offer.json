@@ -1,0 +1,90 @@
+import { div, img, input, label, button, p } from '../../scripts/dom-helpers.js';
+
+/**
+ * Dynamic Offer Block
+ * Prompts user for cost and APR values and generates a dynamic image URL
+ */
+
+export default async function decorate(block) {
+  // Create the form structure
+  const offerBlock = div({ class: 'dynamic-offer-block' },
+    div({ class: 'offer-form' },
+      h2({ class: 'offer-title' }, 'Calculate Your Offer'),
+      div({ class: 'form-group' },
+        label({ for: 'cost-input', class: 'form-label' }, 'Cost:'),
+        input({ 
+          type: 'number', 
+          id: 'cost-input', 
+          class: 'form-input', 
+          placeholder: 'Enter cost amount',
+          min: '0',
+          step: '0.01'
+        })
+      ),
+      div({ class: 'form-group' },
+        label({ for: 'apr-input', class: 'form-label' }, 'APR Percentage:'),
+        input({ 
+          type: 'number', 
+          id: 'apr-input', 
+          class: 'form-input', 
+          placeholder: 'Enter APR percentage',
+          min: '0',
+          max: '100',
+          step: '0.01'
+        })
+      ),
+      button({ 
+        type: 'button', 
+        class: 'generate-button',
+        onclick: 'generateOfferImage()'
+      }, 'Generate Offer Image'),
+      div({ id: 'offer-image-container', class: 'offer-image-container' })
+    )
+  );
+
+  // Clear block and add content
+  block.textContent = '';
+  block.appendChild(offerBlock);
+
+  // Add the JavaScript function to the global scope
+  window.generateOfferImage = function() {
+    const costInput = document.getElementById('cost-input');
+    const aprInput = document.getElementById('apr-input');
+    const imageContainer = document.getElementById('offer-image-container');
+    
+    const cost = costInput.value;
+    const apr = aprInput.value;
+    
+    if (!cost || !apr) {
+      imageContainer.innerHTML = '<p class="error-message">Please enter both cost and APR values.</p>';
+      return;
+    }
+    
+    // Generate the dynamic URL
+    const baseUrl = 'https://smartimaging.scene7.com/is/image/DynamicMediaNA/Offer-1';
+    const params = new URLSearchParams({
+      '$hideBlackGalaxy': '0',
+      '$eventName': 'Black Friday Event',
+      '$cost': cost,
+      '$aprCost': apr,
+      '$hideWhiteGalaxy': '0',
+      'wid': '2000',
+      'hei': '2000',
+      'qlt': '100',
+      'fit': 'constrain'
+    });
+    
+    const dynamicUrl = `${baseUrl}?${params.toString()}`;
+    
+    // Create and display the image
+    imageContainer.innerHTML = `
+      <div class="offer-image-wrapper">
+        <img src="${dynamicUrl}" alt="Dynamic Offer Image" class="offer-image" loading="lazy">
+        <div class="offer-details">
+          <p><strong>Cost:</strong> $${parseFloat(cost).toLocaleString()}</p>
+          <p><strong>APR:</strong> ${parseFloat(apr).toFixed(2)}%</p>
+        </div>
+      </div>
+    `;
+  };
+}
