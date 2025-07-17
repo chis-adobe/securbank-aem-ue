@@ -2,75 +2,6 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: Arial, sans-serif;
-}
-
-.offer-form {
-  background-color: #f8f9fa;
-  padding: 2rem;
-  border-radius: 8px;
-  border: 1px solid #dee2e6;
-}
-
-.offer-title {
-  margin: 0 0 1.5rem 0;
-  color: #333;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #495057;
-}
-
-.form-input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-.generate-button {
-  width: 100%;
-  padding: 0.75rem 1.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.generate-button:hover {
-  background-color: #0056b3;
-}
-
-.generate-button:active {
-  background-color: #004085;
-}
-
-.offer-image-container {
-  margin-top: 2rem;
-}
-
-.offer-image-wrapper {
   text-align: center;
 }
 
@@ -83,7 +14,7 @@
 }
 
 .offer-details {
-  background-color: #e9ecef;
+  background-color: #f8f9fa;
   padding: 1rem;
   border-radius: 4px;
   margin-top: 1rem;
@@ -101,7 +32,6 @@
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
   border-radius: 4px;
-  margin-top: 1rem;
 }
 
 /* Responsive design */
