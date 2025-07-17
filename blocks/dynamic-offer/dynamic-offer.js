@@ -4,9 +4,9 @@
  */
 
 export default async function decorate(block) {
-  // Get model values from block dataset or config
-  const cost = block.dataset.cost || block.querySelector('[data-name="cost"]')?.textContent?.trim();
-  const apr = block.dataset.apr || block.querySelector('[data-name="apr"]')?.textContent?.trim();
+  const props = [...block.children];
+  const cost = props[0]?.textContent?.trim();
+  const apr = props[1]?.textContent?.trim();
 
   if (!cost || !apr) {
     block.innerHTML = '<p class="error-message">Please provide both cost and APR values in the block configuration.</p>';
