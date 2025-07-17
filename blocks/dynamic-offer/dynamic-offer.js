@@ -18,12 +18,15 @@ export default async function decorate(block) {
 
   // Generate the dynamic URL
   const baseUrl = 'https://smartimaging.scene7.com/is/image/DynamicMediaNA/Offer-1';
+  const hideBlackGalaxyValue = hideBlackGalaxy ? '1' : '0';
+  const hideWhiteGalaxyValue = hideWhiteGalaxy ? '1' : '0';
+  
   const params = new URLSearchParams({
-    '$hideBlackGalaxy': hideBlackGalaxy ? '1' : '0',
+    '$hideBlackGalaxy': hideBlackGalaxyValue,
     '$eventName': eventName,
     '$cost': cost,
     '$aprCost': apr,
-    '$hideWhiteGalaxy': hideWhiteGalaxy ? '1' : '0',
+    '$hideWhiteGalaxy': hideWhiteGalaxyValue,
     'wid': '2000',
     'hei': '2000',
     'qlt': '100',
@@ -36,13 +39,6 @@ export default async function decorate(block) {
   block.innerHTML = `
     <div class="dynamic-offer-block">
       <img src="${dynamicUrl}" alt="Dynamic Offer Image" class="offer-image" loading="lazy">
-      <div class="offer-details">
-        <p><strong>Event:</strong> ${eventName}</p>
-        <p><strong>Cost:</strong> $${parseFloat(cost).toLocaleString()}</p>
-        <p><strong>APR:</strong> ${parseFloat(apr).toFixed(2)}%</p>
-        <p><strong>Hide Black Galaxy:</strong> ${hideBlackGalaxy ? 'Yes' : 'No'}</p>
-        <p><strong>Hide White Galaxy:</strong> ${hideWhiteGalaxy ? 'Yes' : 'No'}</p>
-      </div>
     </div>
   `;
 } 
