@@ -734,6 +734,12 @@
         "component": "boolean",
         "name": "hideWhiteGalaxy",
         "label": "Hide White Galaxy"
+      },
+      {
+        "component": "text",
+        "name": "customParams",
+        "label": "Custom Parameters (JSON)",
+        "valueType": "string"
       }
     ]
   }
