@@ -44,7 +44,7 @@
   --heading-font-size-xs: 18px;
 
   /* nav height */
-  --nav-height: 72px;
+  --nav-height: 150px;
 }
 
 @font-face {
@@ -257,4 +257,13 @@ main .section-heading {
   text-align: center;
   padding: 40px;
   font-size: 36px;
+}
+
+.section.home p:has(img) {
+  display: flex;
+  justify-content: center;
+}
+
+.section.home p:has(img) img {
+  max-width: 600px;
 }

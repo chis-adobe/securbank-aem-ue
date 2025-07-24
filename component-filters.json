@@ -2,7 +2,8 @@
   {
     "id": "main",
     "components": [
-      "section"
+      "section",
+      "blog"
     ]
   },
   {
@@ -21,11 +22,26 @@
       "featurearticles",
       "map",
       "offer",
-      "forex"
+      "featurearticles",
+      "fragment",
+      "adventure",
+      "faq",
+      "rates",
+      "author",
+      "blog",
+      "forex",
+      "carousel",
+      "dynamic-media"
     ]
   },
   {
     "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
+    "id": "carousel",
     "components": [
       "card"
     ]
@@ -42,7 +58,8 @@
       "text",
       "image",
       "button",
-      "title"
+      "title",
+      "dynamic-media"
     ]
   }
 ]

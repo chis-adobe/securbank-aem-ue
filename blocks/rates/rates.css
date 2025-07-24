@@ -1,0 +1,127 @@
+/* suppress nested section padding */
+.rates-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.rates-wrapper {
+  padding: 0;
+  margin-top: 50px;
+}
+
+.rates-wrapper.list {
+  margin: 80px;
+}
+
+.rates-wrapper.single {
+  max-width: 750px;
+}
+
+.rates-wrapper > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.rates-wrapper > div > .rates-container {
+  display: flex;
+  gap: 20px;
+  margin-right: 50px;
+}
+
+.rates-wrapper.list .header {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00567d;
+  background: #dbe2e5;
+  font-size: 1.25rem;
+}
+
+.rates-wrapper.single .header {
+  color: #51514d;
+  font-family: sofia-pro, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 3rem;
+  letter-spacing: -.03rem;
+  margin: 80px 0;
+}
+
+.rates-wrapper .open .header {
+  color: #ffbe19;
+  background: #00567d;
+}
+
+.rates-wrapper .rate-list {
+  display: none;
+}
+
+.rates-wrapper.single .rate-list {
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f7fa;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.rates-wrapper .open .rate-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.rates-wrapper .rate-list > div:first-of-type {
+  border-top: none;
+}
+
+.rates-wrapper .rate-list > div:first-of-type span {
+  
+}
+
+.rates-wrapper.list .rate-list > div:first-of-type span {
+  display: flex;
+}
+
+.rates-wrapper .rate-list > div {
+  display: flex;
+  border-top: solid 1px gray;
+}
+
+.rates-wrapper.single .rate-list > div {
+  flex-direction: row-reverse;
+}
+
+.rates-wrapper.single .rate-list > div {
+
+}
+
+.rates-wrapper.single .rate-list > div.highlight span {
+  background-color: purple;
+  color: white;
+}
+
+.rates-wrapper .rate-list > div > span {
+  display: block;
+  padding: 10px;
+}
+
+.rates-wrapper.single .rate-list > div > span {
+  padding: 40px;
+}
+
+.rates-wrapper .rate-list > div > span.rate {
+  width: 25%;
+}
+
+.rates-wrapper.single .rate-list > div > span.rate {
+}
+
+.rates-wrapper .rate-list > div > span.product {
+  width: 75%;
+  border-left: 1px solid gray;
+}
+
+.rates-wrapper.single .rate-list > div > span.product {
+  border-left: none;
+}

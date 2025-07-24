@@ -1,0 +1,31 @@
+main .blog-container > div {
+  max-width: 1280px;
+}
+  
+main .blog-container {
+  padding: 0;
+}
+
+main .blog {
+  position: relative;
+  padding: 32px;
+  min-height: 454px;
+}
+
+main .blog h1 {
+  max-width: 1280px;
+  margin: 106px auto 0;
+  font: normal normal normal 48px/52px adobe-clean, sans-serif;
+}
+
+main .blog .author {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 1280px;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font: normal normal 900 48px/52px adobe-clean, sans-serif;
+}

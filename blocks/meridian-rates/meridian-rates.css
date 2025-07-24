@@ -1,0 +1,112 @@
+/* suppress nested section padding */
+.rates-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.rates-wrapper {
+  padding: 0;
+  margin-top: 50px;
+}
+
+.rates-wrapper > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.rates-wrapper > div > div {
+  margin-right: 50px;
+}
+
+.rates-wrapper .header {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00567d;
+  background: #dbe2e5;
+  font-size: 1.25rem;
+}
+
+.rates-wrapper .open .header {
+  color: #ffbe19;
+  background: #00567d;
+}
+
+.rates-wrapper .rates {
+  display: none;
+}
+
+.rates-wrapper.single .rates {
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f7fa;
+  margin-top: 30px;
+}
+
+.rates-wrapper .open .rates {
+  display: flex;
+  flex-direction: column;
+}
+
+.rates-wrapper .rates > div:first-of-type {
+
+}
+
+.rates-wrapper .rates > div:first-of-type span {
+  border-top: none;
+}
+
+.rates-wrapper.list .rates > div:first-of-type span {
+  display: flex;
+}
+
+.rates-wrapper .rates > div {
+  display: flex;
+}
+
+.rates-wrapper.single .rates > div {
+  flex-direction: row-reverse;
+}
+
+.rates-wrapper.single .rates > div {
+  margin: 10px;
+}
+
+.rates-wrapper.single .rates > div.highlight {
+  background-color: purple;
+}
+
+.rates-wrapper .rates > div > span {
+  display: block;
+  border-top: 1px solid gray;
+  padding: 20px;
+}
+
+.rates-wrapper.single .rates > div > span {
+  padding: 40px;
+}
+
+.rates-wrapper .rates > div > span.rate {
+  width: 25%;
+}
+
+.rates-wrapper.single .rates > div > span.rate {
+  line-height: 1.5625rem;
+  height: 100%;
+  background-color: transparent;
+  overflow-wrap: break-word;
+  text-align: right;
+  font-weight: 600;
+  color: #202223;
+}
+
+.rates-wrapper .rates > div > span.product {
+  width: 75%;
+  border-left: 1px solid gray;
+}
+
+.rates-wrapper.single .rates > div > span.product {
+  border-left: none;
+}
